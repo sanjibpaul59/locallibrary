@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1> {{author.get_full_name}} </h1>
+{% if author.date_of_birth and author.date_of_death %}
+  <p>{{author.date_of_birth}} - {{author.date_of_death}} <span>(Lived {{author.author_age}} years)</span> </p>
+  <p>Lived {{author.author_age}} years</p>
+{% elif author.date_of_birth %}
+  <p>{{author.date_of_birth}} - Present </p>
+  <p>Age {{author.author_age}} years</p>
+{% else %}
+  <p>Unknown </p>
+{% endif %}
+
+{% for book in author.books_authored%}
+    <p>{{book.title}}</p>
+{% endfor %}
+{% endblock %}
